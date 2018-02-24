@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+    <p th:text="${company}"></p>
+
+<form action="/save">
+    <h1>添加</h1>
+    ID:<input type="text" name="userId" /><br/>
+    金额：<input type="text" name="balance" /><br/>
+    备注：<input type="text" name="creditLine" /><br/>
+    <input type="submit" value="添加" />
+</form>
+</body>
+</html>

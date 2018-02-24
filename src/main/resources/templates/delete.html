@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+    <p th:text="${company}"></p>
+
+<form action="/delete">
+    <h1>删除</h1>
+    ID:<input type="text" name="userId" /><br/>
+    <input type="submit" value="删除" />
+</form>
+</body>
+</html>

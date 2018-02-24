@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/dir/str.css}"/>
+<body>
+<tr th:each="item:${users}">
+    <td th:text="${item.username}"></td>
+    <td th:text="${item.company}"></td><br/>
+    <td th:text="${path}"></td><br/>
+</tr>
+<form action="/getUser">
+    <input type="hidden" name="name"  value="admin"/>
+    <h1 id="str">123456</h1>
+    <input type="submit" value="提交" />
+    <input name="test" type="checkbox" checked="checked" style="display: none" />
+</form>
+</body>
+</html>

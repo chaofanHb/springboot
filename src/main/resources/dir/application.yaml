@@ -1,0 +1,9 @@
+mongodb:
+  primary:
+    host: 127.0.0.1
+    port: 27017
+    database: zflow
+  secondary:
+    host: 127.0.0.1
+    port: 27017
+    database: zflow2

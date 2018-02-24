@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+    <p th:text="${company}"></p>
+
+<form action="/update">
+    <h1>修改</h1>
+    ID:<input type="text" name="userId" /><br/>
+    备注：<input type="text" name="creditLine" /><br/>
+    <input type="submit" value="修改" />
+</form>
+</body>
+</html>
