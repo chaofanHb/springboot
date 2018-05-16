@@ -1,6 +1,7 @@
 package Cons.entity;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 public class Credit implements Serializable {
 
@@ -11,6 +12,8 @@ public class Credit implements Serializable {
     private Double balance = 0.0;
 
     private String creditLine ;
+
+    private User user;
 
     public String getUserId() {
         return userId;
@@ -34,5 +37,25 @@ public class Credit implements Serializable {
 
     public void setCreditLine(String creditLine) {
         this.creditLine = creditLine;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(get());
+    }
+
+    private static String get(){
+        Credit credit=new Credit();
+        credit.setUserId("safa");
+        return Optional.of(credit).map(c -> c.getUser())
+                .map(u -> u.getUsername())
+                .map(n -> n.toUpperCase()).orElse("123456");
     }
 }

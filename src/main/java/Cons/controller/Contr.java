@@ -45,6 +45,11 @@ public class Contr {
     @Autowired
     private User2Mapper user2Mapper;
 
+    @RequestMapping(value = "/index")
+    public String index(){
+        return "webscokt";
+    }
+
     @ModelAttribute
     public void mod(@RequestParam(value = "company", defaultValue = "张三") String company, Model model) {
         model.addAttribute("company", company);

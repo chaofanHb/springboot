@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 //@EnableWebMvc
 @SpringBootApplication
-@EnableAutoConfiguration(exclude={JpaRepositoriesAutoConfiguration.class//禁止springboot自动加载持久化bean 便于创建JPA数据持久层原型
+@EnableAutoConfiguration(exclude={JpaRepositoriesAutoConfiguration.class//禁止springboot自动加载持久化bean 便于创建JPA数据持久层原型(多数据源时)
 })
 //@EnableScheduling  //启动定时任务
 //@MapperScan("cons.mapper")    //扫描接口
