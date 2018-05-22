@@ -1,13 +1,16 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value='${pageContext.request.contextPath}'/>
 <head>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type"content="text/html; charset=UTF-8">
     <title>广播式WebSocket</title>
-    <script type="text/javascript" th:src="@{/js/sockjs.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/stomp.js}"></script>
-    <script type="text/javascript" th:src="@{/js/jquery-1.8.2.min.js}"></script>
+    <script type="text/javascript" src="/js/sockjs.min.js"></script>
+    <script type="text/javascript" src="/js/stomp.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
 </head>
-<link rel="stylesheet" th:href="@{/dir/str.css}"/>
-<body id="str" onload="disconnect()">
+<body onload="disconnect()">
 <noscript><h2 style="color: #e80b0a;">Sorry，浏览器不支持WebSocket</h2></noscript>
 <div>
     <div>
@@ -38,7 +41,7 @@
             setConnected(true);
             console.log('Connected:' + frame);
             stompClient.subscribe('/topic/getResponse', function (response) {
-                showResponse(JSON.parse(response.body));
+                showResponse(JSON.parse(response.body).responseMessage);
             })
         });
     }

@@ -2,6 +2,7 @@ package Cons.jdk8;
 
 import Cons.dto.User;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -45,8 +46,13 @@ public class Jdk8Test {
         Consumer<User> greeter = (u) -> System.out.println("Hello, " + u.getName());
         greeter.accept(new User("Luke", "Skywalker"));
 
-
-
+        String rs = Optional.ofNullable(new User())
+                .map(u ->{
+                    Optional<String> o=Optional.ofNullable(u.getName());
+                    return o.orElse("123456");
+                })
+                .orElse("11111");
+        System.out.println(rs);
 
     }
 }
