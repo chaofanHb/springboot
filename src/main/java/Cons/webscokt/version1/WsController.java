@@ -1,12 +1,14 @@
-package Cons.webscokt;
+package Cons.webscokt.version1;
 
+import Cons.webscokt.version1.dto.RequestMessage;
+import Cons.webscokt.version1.dto.ResponseMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 
 /**
- * Created by Hebin on 2018/5/15.
+ * Created by Hebin on 2018/5/24.
  */
 @Controller
 public class WsController {

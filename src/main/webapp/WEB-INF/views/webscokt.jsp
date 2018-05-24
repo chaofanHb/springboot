@@ -14,6 +14,7 @@
 <noscript><h2 style="color: #e80b0a;">Sorry，浏览器不支持WebSocket</h2></noscript>
 <div>
     <div>
+        <input type="text" id="user" />
         <button id="connect" onclick="connect();">连接</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">断开连接</button>
     </div>
@@ -40,7 +41,9 @@
         stompClient.connect({}, function (frame) {
             setConnected(true);
             console.log('Connected:' + frame);
-            stompClient.subscribe('/topic/getResponse', function (response) {
+            var user = $("#user").val();
+            alert(user);
+            stompClient.subscribe('/user/'+user+'/msg', function (response) {
                 showResponse(JSON.parse(response.body).responseMessage);
             })
         });

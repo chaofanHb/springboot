@@ -47,7 +47,7 @@ public class Contr {
 
     @RequestMapping(value = "/index")
     public String index(){
-        return "webscokt";
+        return "webscokt2";
     }
 
     @ModelAttribute

@@ -1,4 +1,4 @@
-package Cons.webscokt;
+package Cons.webscokt.version1.dto;
 
 /**
  * Created by Hebin on 2018/5/15.

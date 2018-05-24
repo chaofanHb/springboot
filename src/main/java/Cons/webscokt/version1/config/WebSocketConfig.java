@@ -1,4 +1,4 @@
-package Cons.webscokt;
+package Cons.webscokt.version1.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
