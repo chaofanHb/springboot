@@ -50,6 +50,11 @@ public class Contr {
         return "webscokt2";
     }
 
+    @RequestMapping(value = "/hybrid")
+    public String hybrid(){
+        return "hybrid";
+    }
+
     @ModelAttribute
     public void mod(@RequestParam(value = "company", defaultValue = "张三") String company, Model model) {
         model.addAttribute("company", company);
