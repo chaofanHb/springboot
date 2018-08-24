@@ -1,4 +1,3 @@
-/*
 package Cons.dao.mongoDb_daoImpl;
 
 import Cons.dao.basicDao.MongoCustomerDao;
@@ -86,7 +85,7 @@ public class UserDaoImpl implements UserDao {
 
     public List<User> searchPage(){
         List<User> list=new ArrayList<User>();
-        DBCursor limit=mongoTemplate.getCollection("user").find().skip(5).limit(10);
+        DBCursor limit=mongoTemplate.getCollection("user").find();//.skip(5).limit(10);
         while (limit.hasNext()){
             list.add(User.parse(limit.next()));
         }
@@ -129,16 +128,13 @@ public class UserDaoImpl implements UserDao {
         }
     }
     public void selectGroup(){
-        */
-/*
-        db.getCollection('user').group({key:{company:true},condition:{_id:{$gt:10}},initial:{num:0},$reduce:function(doc,prev){prev.num++}})
+        //db.getCollection('user').group({key:{company:true},condition:{_id:{$gt:10}},initial:{num:0},$reduce:function(doc,prev){prev.num++}})
 
-        String reduce="function(obj, prev) {prev.isum += obj._id}";
-        DBObject dbObject= mongoTemplate.getCollection("user").group(new BasicDBObject("company",true),new BasicDBObject("username",new BasicDBObject("$exists",false)),new BasicDBObject("isum",0),reduce );*//*
+        //String reduce="function(obj, prev) {prev.isum += obj._id}";
+        //DBObject dbObject= mongoTemplate.getCollection("user").group(new BasicDBObject("company",true),new BasicDBObject("username",new BasicDBObject("$exists",false)),new BasicDBObject("isum",0),reduce );
 
         String reduce="function(obj, prev) {prev.isum += obj._id}";
         DBObject dbObject= mongoTemplate.getCollection("user").group(new BasicDBObject("_id",true).append("company",true),new BasicDBObject("username",new BasicDBObject("$exists",false)),new BasicDBObject("isum",0),reduce );
         new GroupUser().parseGroupUser(dbObject);
     }
 }
-*/

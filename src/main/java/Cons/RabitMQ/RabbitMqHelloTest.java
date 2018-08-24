@@ -32,6 +32,7 @@ public class RabbitMqHelloTest {
     @Test
     public void topic() throws Exception {
         //topicSender.send1();
+        topicSender.send1();
         topicSender.send2();
     }
 }

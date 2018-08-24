@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,11 +32,13 @@ public class DataTest {
     }
     @Test
     public void testSaveUser() throws Exception {
-        for (int i = 1; i < 2; i++) {
+        for (int i = 1; i < 15; i++) {
             User user=new User();
-            user.setId(4l+i);
-            user.setUsername("小明");
-            user.setCompany("fffooo123");
+            user.setId(0l+i);
+            user.setUsername("小明"+i);
+            user.setCompany(""+i);
+            user.setConmentTime(new Date());
+            user.setPid("1");
             userDao.saveUser(user);
         }
     }

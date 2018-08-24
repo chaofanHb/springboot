@@ -15,7 +15,7 @@ import java.util.Set;
  * Author list:
  * EricHuang,
  */
-public class CustomUserDetailsService implements AuthenticationUserDetailsService<CasAssertionAuthenticationToken> {
+/*public class CustomUserDetailsService implements AuthenticationUserDetailsService<CasAssertionAuthenticationToken> {
     Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
 
@@ -33,4 +33,4 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
         return userInfo;
     }
 
-}
+}*/

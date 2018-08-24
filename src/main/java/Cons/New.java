@@ -1,10 +1,19 @@
 package Cons;
 
+import Cons.dao.basicDao.MongoCustomerDao;
+import com.mongodb.MongoClient;
+import org.mongodb.morphia.DatastoreImpl;
+import org.mongodb.morphia.Morphia;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.io.IOException;
 
@@ -29,7 +38,7 @@ public class New extends SpringBootServletInitializer {
         app.run(args);*/
 
     }
-   /* @Override
+    @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(New.class);
     }
@@ -47,13 +56,13 @@ public class New extends SpringBootServletInitializer {
     }
 
     @Bean
-    public DatastoreImpl datastoreImpl(Morphia morphia,MongoClient mongoClient){
+    public DatastoreImpl datastoreImpl(Morphia morphia, MongoClient mongoClient){
         return new  DatastoreImpl( morphia,  mongoClient, "zflow");
     }
     @Bean
     public MongoCustomerDao mongoCustomerDao(DatastoreImpl datastoreImpl){
         return new MongoCustomerDao(datastoreImpl);
-    }*/
+    }
  /*   @Bean
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();

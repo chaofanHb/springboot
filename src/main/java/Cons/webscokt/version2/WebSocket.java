@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by Hebin on 2018/5/23.
  */
 @Component
-@ServerEndpoint("/webSocket/{param}")
+//@ServerEndpoint("/webSocket/{param}")
 public class WebSocket {
 
     private static String ONLINE = "已上线";

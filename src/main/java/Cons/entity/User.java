@@ -1,8 +1,10 @@
 package Cons.entity;
 
 import com.mongodb.DBObject;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/7/21.
@@ -13,10 +15,28 @@ public class User implements Serializable {
     private String company;
     private String title;
     private Long totalPop;
+    private Date conmentTime;
+    private String pid;
 
     private Companys companys;
 
     public User() {
+    }
+
+    public Date getConmentTime() {
+        return conmentTime;
+    }
+
+    public void setConmentTime(Date conmentTime) {
+        this.conmentTime = conmentTime;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getTitle() {
@@ -69,14 +89,15 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        String companystr=companys==null?null:companys.toString();
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", company='" + company + '\'' +
                 ", title='" + title + '\'' +
-                ", totalPop='" + totalPop + '\'' +
-                ", companys='" +companystr+ '\'' +
+                ", totalPop=" + totalPop +
+                ", conmentTime=" + conmentTime +
+                ", pid='" + pid + '\'' +
+                ", companys=" + companys +
                 '}';
     }
 
@@ -85,6 +106,8 @@ public class User implements Serializable {
         user.setId(Long.valueOf(object.get("_id").toString()));
         user.setUsername(object.get("username").toString());
         user.setCompany(object.get("company").toString());
+        user.setPid(object.get("pid").toString());
+        user.setConmentTime((Date)object.get("conmentTime"));
         return  user;
     }
 

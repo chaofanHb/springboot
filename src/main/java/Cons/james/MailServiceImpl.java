@@ -1,3 +1,4 @@
+/*
 package Cons.james;
 
 import org.slf4j.Logger;
@@ -14,9 +15,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 
-/**
- * Created by Administrator on 2017/9/13.
- */
+
 @Service
 public class MailServiceImpl implements MailService {
     private static Logger logger= LoggerFactory.getLogger(MailServiceImpl.class);
@@ -100,3 +99,4 @@ public class MailServiceImpl implements MailService {
         }
     }
 }
+*/

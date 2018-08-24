@@ -29,6 +29,16 @@
     </dependency>
 
     <dependency>
+      <groupId>io.fabric8.kubernetes</groupId>
+      <artifactId>kubernetes-karaf-itests</artifactId>
+      <version>2.5.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
     </dependency>

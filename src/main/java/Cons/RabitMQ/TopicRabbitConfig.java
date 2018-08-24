@@ -1,9 +1,7 @@
 package Cons.RabitMQ;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,32 +10,37 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class TopicRabbitConfig {
-    final static String message = "topic.message";
-    final static String messages = "topic.messages";
+    final static String message = "api_core_total";
+    final static String messages = "last_log_msg";
 
     @Bean
     public Queue queueMessage() {
-        return new Queue(TopicRabbitConfig.message);
+        return new Queue(TopicRabbitConfig.message, false);
     }
 
     @Bean
     public Queue queueMessages() {
-        return new Queue(TopicRabbitConfig.messages);
+        return new Queue(TopicRabbitConfig.messages, true);
+    }
+
+    @Bean("exchange1")
+    DirectExchange exchange1() {
+        return new DirectExchange("BACKEND_EXCHANGE", false, false);
+    }
+
+    @Bean("exchange2")
+    DirectExchange exchange2() {
+        return new DirectExchange("MESSAGE_EXCHANGE", true, false);
     }
 
     @Bean
-    TopicExchange exchange() {
-        return new TopicExchange("exchange");
+    Binding bindingExchangeMessage(Queue queueMessage, @Qualifier("exchange1")  DirectExchange exchange1) {
+        return BindingBuilder.bind(queueMessage).to(exchange1).with("api_core_total");
     }
 
     @Bean
-    Binding bindingExchangeMessage(Queue queueMessage, TopicExchange exchange) {
-        return BindingBuilder.bind(queueMessage).to(exchange).with("topic.message");
-    }
-
-    @Bean
-    Binding bindingExchangeMessages(Queue queueMessages, TopicExchange exchange) {
-        return BindingBuilder.bind(queueMessages).to(exchange).with("topic.#");
+    Binding bindingExchangeMessages(Queue queueMessages,@Qualifier("exchange2")  DirectExchange exchange2) {
+        return BindingBuilder.bind(queueMessages).to(exchange2).with("SYSINFO");
     }
 
 }
