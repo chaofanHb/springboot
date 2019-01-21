@@ -1,0 +1,110 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+
+
+    <link rel="stylesheet" th:href="@{/mycss/cascader.css}"/>
+    <link rel="stylesheet" th:href="@{/mycss/eleTree.css}"/>
+</head>
+<body>
+    
+    <div class="eleTree ele1"></div>
+    
+
+    <script th:src="@{/layui/layui.js}"></script>
+    <script>
+    /* <![CDATA[  thymeleaf中严格w3c规范  特殊符号需要转义 */
+    	
+    	
+        layui.config({
+            base: "../layui/lay/mymodules/"
+        }).use(['form',"jquery","form","eleTree"], function(){
+            var $ = layui.jquery;
+            var cascader = layui.cascader;
+            var eleTree = layui.eleTree;
+            
+            eleTree.render({
+                elem: '.ele1',
+                url: "/cascader",
+                lazy: true,
+                load: function(data,callback){
+                	//没有子节点的单击会被拦截
+                	if(!data.hasChildren){
+                		callback([]);
+                		return;
+                	}
+                	$.ajax({
+                		url: "/cascader/getData?id="+ data.id,
+                		contentType: "application/json",
+                		method: 'POST',
+                		success: function (res) {
+                			alert('succecss');
+                			callback(res);
+                			//优化没有子节点时多选框前面不显示三角形
+                			$(".eleTree-node-content-label").each(function(index){
+                				var self = $(this);
+                				var text = self.text();
+                 				for(var i=0; i<res.length; i++){
+                					if(text == res[i].label){
+                						if(!res[i].hasChildren){
+                							//没有子节点的初始化时预先单击  消除三角形图标
+                							self.click();
+                						}
+                					}
+                				}
+                			})
+                		},
+                		error: function () {
+                			alert('error');
+                		}
+                	})
+                },
+                /* data: [
+                    {
+                        id: 1,
+                        label: "安徽省",
+                        disabled: true,
+                        children: [
+                            {
+                                id: 2,
+                                label: "马鞍山市",
+                                disabled: true,
+                                children: [
+                                    {
+                                        id: 3,
+                                        label: "和县",
+                                    },
+                                    {
+                                        id: 4,
+                                        label: "花山区",
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        label: "河南省",
+                        children: [
+                            {
+                                id: 6,
+                                label: "郑州市"
+                            }
+                        ]
+                    }
+                ], */
+                showCheckbox: true,
+            })     
+        });
+        
+        
+        
+        /* ]]> */
+    </script>
+        
+</body>
+</html>

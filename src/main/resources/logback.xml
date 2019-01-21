@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- %m输出的信息,%p日志级别,%t线程名,%d日期,%c类的全名,,,, -->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT" class="ch.qos.logback.core.hboleAppender">
         <encoder>
             <pattern>%d %p (%file:%line\)- %m%n</pattern>
             <!--<charset>UTF-8</charset>&lt;!&ndash; 此处设置字符集 &ndash;&gt;-->
@@ -9,7 +9,7 @@
     </appender>
     <appender name="baselog"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>C:\Users\Administrator.admin-PC\Desktop\Boot\src\main\resources\log/base.log/</File>
+        <File>C:\Users\chaofan\Desktop\springboot\src\main\resources\log/base.log/</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>log/base.log.%d.%i</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
