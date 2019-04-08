@@ -1,6 +1,8 @@
 package hb.entity;
 
 import com.mongodb.DBObject;
+
+import org.bson.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -101,7 +103,7 @@ public class User implements Serializable {
                 '}';
     }
 
-    public static User parse(DBObject object){
+    public static User parse(Document object){
         User user=new User();
         user.setId(Long.valueOf(object.get("_id").toString()));
         user.setUsername(object.get("username").toString());

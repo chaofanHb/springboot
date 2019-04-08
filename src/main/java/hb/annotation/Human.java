@@ -5,11 +5,11 @@ package hb.annotation;
  */
 @HtmlTempalte(name = "xxx")
 public class Human {
-    @Fileds
+    @Fileds(name ="name")
     private String name;
-    @Fileds
+    @Fileds(name ="dept")
     private String dept;
-    @Fileds
+    @Fileds(name ="age")
     private String age;
 
 

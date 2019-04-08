@@ -14,6 +14,13 @@
     
     <div class="eleTree ele1"></div>
     
+<form action="/uploadServlet" method="post" enctype="multipart/form-data">
+  	请选择上传图片：<input type="file" id="myfile" name="myfile" onchange="showPreview(this)" />
+  	<input type="submit" value="提交"/>
+  </form>
+
+    	
+    </form>
 
     <script th:src="@{/layui/layui.js}"></script>
     <script>

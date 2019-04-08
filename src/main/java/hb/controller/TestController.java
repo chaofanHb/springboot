@@ -3,6 +3,7 @@ package hb.controller;
 import hb.dao.test1.User1Mapper;
 import hb.dao.test2.User2Mapper;
 import hb.entity.Credit;
+import hb.entity.User;
 import hb.redis.RedisService;
 import hb.threadSession.RestAuthUtils;
 import hb.threadSession.Session;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -51,6 +53,16 @@ public class TestController {
 
     @RequestMapping("/toCascader")
     public String toCascader() {
+    	User user = user1Mapper.getOne(1l);
+    	System.out.println(user.toString());
+        return "cascader";
+    }
+    
+    @RequestMapping("//uploadServlet")
+    @ResponseBody
+    public String upload(HttpServletRequest request) {
+    	 MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;//request强制转换注意
+    	 
         return "cascader";
     }
 

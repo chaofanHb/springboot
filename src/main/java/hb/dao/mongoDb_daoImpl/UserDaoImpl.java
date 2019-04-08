@@ -10,7 +10,11 @@ import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.util.JSON;
+
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -85,7 +89,8 @@ public class UserDaoImpl implements UserDao {
 
     public List<User> searchPage(){
         List<User> list=new ArrayList<User>();
-        DBCursor limit=mongoTemplate.getCollection("user").find();//.skip(5).limit(10);
+        FindIterable<Document> temp=mongoTemplate.getCollection("user").find();//.skip(5).limit(10);
+        MongoCursor<Document> limit = temp.iterator();
         while (limit.hasNext()){
             list.add(User.parse(limit.next()));
         }
@@ -112,7 +117,7 @@ public class UserDaoImpl implements UserDao {
 
     public void selectAggrega(){
         //db.getCollection('user').aggregate({$group:{_id:"$company",company:{$sum:"$_id"}}},{$match:{company:{$gt:10}}},{$sort:{company:1}})
-        String group="{$group:{_id:\"$company\",totalPop:{$sum:\"$_id\"}}}";
+        /*String group="{$group:{_id:\"$company\",totalPop:{$sum:\"$_id\"}}}";
         String match="{$match:{totalPop:{\"$gt\":10}}}";
         DBObject grou= (DBObject) JSON.parse(group);
         DBObject mat= (DBObject) JSON.parse(match);
@@ -125,7 +130,7 @@ public class UserDaoImpl implements UserDao {
         }
         for(User user:list){
             System.out.println(user.getCompany()+"\t"+user.getTotalPop());
-        }
+        }*/
     }
     public void selectGroup(){
         //db.getCollection('user').group({key:{company:true},condition:{_id:{$gt:10}},initial:{num:0},$reduce:function(doc,prev){prev.num++}})
@@ -133,8 +138,8 @@ public class UserDaoImpl implements UserDao {
         //String reduce="function(obj, prev) {prev.isum += obj._id}";
         //DBObject dbObject= mongoTemplate.getCollection("user").group(new BasicDBObject("company",true),new BasicDBObject("username",new BasicDBObject("$exists",false)),new BasicDBObject("isum",0),reduce );
 
-        String reduce="function(obj, prev) {prev.isum += obj._id}";
+        /*String reduce="function(obj, prev) {prev.isum += obj._id}";
         DBObject dbObject= mongoTemplate.getCollection("user").group(new BasicDBObject("_id",true).append("company",true),new BasicDBObject("username",new BasicDBObject("$exists",false)),new BasicDBObject("isum",0),reduce );
-        new GroupUser().parseGroupUser(dbObject);
+        new GroupUser().parseGroupUser(dbObject);*/
     }
 }

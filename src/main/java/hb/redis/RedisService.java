@@ -4,7 +4,9 @@
 
 package hb.redis;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.ShardedJedis;
@@ -16,7 +18,7 @@ import java.util.List;
 @Service
 public class RedisService {
 
-    private static Logger logger = Logger.getLogger(RedisService.class);
+    private static Logger logger = LoggerFactory.getLogger(RedisService.class);
     private final static String orderPrefix = "order_";
     @Autowired
     private ShardedJedisPool shardedJedisPool;
