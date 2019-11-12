@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration   
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="logImpl" value="LOG4J2"/>
+	</settings>
+	
+	<typeAliases>
+		<package name="cn.hb.entity"/>	
+	</typeAliases>
+	
+<!-- 	<typeHandlers>
+		<typeHandler handler="hb.mybatis.typeHandler.MyTypeHandler"/>
+	</typeHandlers> -->
+	<objectFactory type="cn.hb.mybatis.objectFactory.ExampleObjectFactory">
+	  <property name="name" value="100"/>
+	</objectFactory>
+</configuration>

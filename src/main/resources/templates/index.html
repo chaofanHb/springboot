@@ -1,16 +1,59 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" th:href="@{/dir/str.css}"/>
+<script type="text/javascript" th:src="@{/js/jquery-1.8.2.min.js}"></script>
 <body>
 <tr th:each="item:${users}">
     <td th:text="${item.username}"></td>
     <td th:text="${item.company}"></td><br/>
     <td th:text="${path}"></td><br/>
 </tr>
-<form action="/getUser">
+<form action="/myUpload" enctype="multipart/form-data">
     <input type="hidden" name="name"  value="admin"/>
     <h1 id="str">123456</h1>
-    <input type="submit" value="提交" />
+    <img alt="" width="200px" height="200px" src="/mytest?id=76c1517cec20495491db8905c0470841">
+    <input type="file" name="files" />
+    <input type="hidden" name="scope" value="155496991629148" />
+    <input type="hidden" name="fileToken" value="1554969916291481" />
+    <input type="hidden" name="size" value="0" />
+    <input type="hidden" name="type" value="jpg,jpeg,png" />
+    <input type="hidden" name="storeId" value="image" />
+    <input type="hidden" name="isSingle" value="0" />
+    <input type="hidden" name="fileName" value="" />
+    
+    <input type="file" name="files" />
+    <h2 id="h" type="button" onclick="submit()" >提交</h2>
     <input name="test" type="checkbox" checked="checked" style="display: none" />
 </form>
 </body>
+<script type="text/javascript">
+	function submit(){
+		var formData = new FormData();
+		console.log($("[name=files]")[0].files[0])
+		formData.append("files",$("[name=files]")[0].files[0]);
+		formData.append("scope","155496991629148");
+		formData.append("fileToken","1554969916291481");
+		formData.append("size",0);
+		formData.append("type","jpg,jpeg,png");
+		formData.append("storeId","image");
+		formData.append("isSingle","0");
+		
+		formData.append("fileName","");
+		
+	    $.ajax({  
+	         url: '/myUpload' ,  
+	         type: 'post',  
+	         data: formData,  
+	         cache: false,
+	         processData: false,
+	         contentType: false,
+	         async: false
+	    }).done(function(res) {
+	    	var data =JSON.parse(res);
+	        alert(data.id)
+	        $("#h").append('<img alt="" width="200px" height="200px" src="/mytest?id='+data.id+'"">')
+	    }).fail(function(res) {
+	        
+	    });
+	}
+</script>
 </html>

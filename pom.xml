@@ -27,12 +27,13 @@
       <artifactId>junit</artifactId>
         <version>4.12</version>
     </dependency>
-
-    <dependency>
+    
+    
+    <!-- <dependency>
       <groupId>io.fabric8.kubernetes</groupId>
       <artifactId>kubernetes-karaf-itests</artifactId>
       <version>2.5.7</version>
-    </dependency>
+    </dependency> -->
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -47,10 +48,8 @@
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
     </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-    </dependency>
+    
+    		
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -71,40 +70,35 @@
       <version>2.1.0</version>
     </dependency>
 
-
-<!--     <dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
+    </dependency> 
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-cas</artifactId>
-    </dependency> -->
-  <dependency>
-      <groupId>boot.test</groupId>
-      <artifactId>boot</artifactId>
-      <version>1.1.0</version>
-    </dependency>
+      
+    </dependency> 
     <dependency>
       <groupId>org.webjars.bower</groupId>
       <artifactId>vue</artifactId>
       <version>1.0.21</version>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-jpa</artifactId>
       <version>1.11.1.RELEASE</version>
-    </dependency>
+    </dependency> -->
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
       <version>1.1.1</version>
-    </dependency>
+    </dependency> -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-amqp</artifactId>
@@ -119,7 +113,7 @@
       <artifactId>spring-test</artifactId>
       <version>4.3.7.RELEASE</version>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
@@ -133,7 +127,7 @@
       <groupId>org.mongodb</groupId>
       <artifactId>mongo-java-driver</artifactId>
       <version>${mongodb.version}</version>
-    </dependency>
+    </dependency> -->
 
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -148,11 +142,12 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
     </dependency>
     <!--表格读取-->
-<!--    <dependency>  此包与tomacat包有冲突
+    <!-- 此包与tomacat包有冲突 -->
+  <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>7.0</version>
-  </dependency>-->
+  </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
@@ -195,6 +190,30 @@
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
     </dependency>
+    
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpmime</artifactId>
+      <version>4.5.2</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>3.8.0</version>
+    </dependency>
+    
+            <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        
   </dependencies>
     <build>
       <finalName>boot</finalName>
